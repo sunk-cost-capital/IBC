@@ -115,7 +115,13 @@ const args = isWindows
 		];
 
 console.log(`IBC folder: ${ibcPath}`);
-const child = spawn(command, args, { cwd: ibcPath, stdio: ["ignore", "pipe", "pipe"] });
+// On macOS IBC keeps Gateway settings in ~/Jts, which a real Gateway install
+// creates; HOME points there so the fake one's folder serves.
+const child = spawn(command, args, {
+	cwd: ibcPath,
+	env: { ...process.env, HOME: work },
+	stdio: ["ignore", "pipe", "pipe"],
+});
 let output = "";
 for (const stream of [child.stdout, child.stderr])
 	stream.on("data", (chunk) => {
