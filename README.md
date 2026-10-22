@@ -1,3 +1,23 @@
+## Sunk Cost fork
+
+This is the [Sunk Cost Capital](https://sunkcostcapital.com) fork of IBC,
+maintained for the Sunk Cost desktop app, which bundles it to launch IB
+Gateway. Upstream [IbcAlpha/IBC](https://github.com/IbcAlpha/IBC) was retired
+on 1 September 2026; this fork starts from its final release, 3.24.2.
+
+- `sunk/VERSION` is the bundle version (`3.24.2-sunk.N`).
+- `sunk/build.sh` builds `IBC.jar` against stub IBKR classes
+  (`sunk/tws-stubs`; no IBKR software needed) and packs
+  `dist/IBC-<version>.tar.gz`: `IBC.jar`, `LICENSE.txt`, `version` and the
+  start scripts `ibcstart.sh`, `StartIBC.bat` and `getExtraJavaOptions.ps1`.
+  The committed `resources/IBC.jar` is upstream's and is not used.
+- `sunk/smoke/smoke.mjs` runs a bundle from a folder whose path contains a
+  space, against a fake Gateway, the way the desktop app launches it.
+- The `Sunk bundle` workflow builds, smoke-tests on Linux, macOS and Windows,
+  and publishes a release for each `*-sunk.*` tag.
+
+IBC remains GPL-3.0 (`LICENSE.txt`). The upstream README follows.
+
 ## PROJECT RETIREMENT
 
 >**This project has been retired, as of 1 September 2026. By 'retired', I mean that

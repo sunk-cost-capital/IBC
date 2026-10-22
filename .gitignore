@@ -7,3 +7,5 @@ makedocs/*/*.aux
 makedocs/*/*.log
 makedocs/*/*.tex
 .*
+!.github
+!.gitattributes

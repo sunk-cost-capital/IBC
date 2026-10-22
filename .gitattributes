@@ -1,0 +1,7 @@
+# Keep script line endings byte-for-byte as committed (CRLF for Windows
+# scripts, LF for shell scripts), whatever core.autocrlf says.
+*.bat -text
+*.ps1 -text
+*.vbs -text
+*.sh -text
+*.jar binary
